@@ -1,3 +1,57 @@
 {
-  "extends": "next/core-web-vitals"
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:prettier/recommended",
+        "prettier"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "@typescript-eslint",
+        "react",
+        "react-hooks", // ajusta os hooks
+        "eslint-plugin-import-helpers" // ajusta os importes
+    ],
+    "rules": {
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn",
+        "react/react-in-jsx-scope": "off",
+        "react/prop-types": "off",     
+        "prettier/prettier": [
+              "error",
+              {
+              "endOfLine": "auto"
+              }
+          ],     
+        "import-helpers/order-imports": [
+            //configura a ordenação do imports
+            "warn",
+            {
+                "newlinesBetween": "always",
+                "groups": [
+                    ["/^react/","/^next/", "/@next/" ],
+                    ["/^@components/","/^@types/"],
+                    "/module/",
+                    "/^@shared/",
+                    "/absolute/",
+                    ["parent", "sibling", "index"]
+                ],
+                "alphabetize": { "order": "asc", "ignoreCase": true }
+            }
+        ]
+    }
 }
