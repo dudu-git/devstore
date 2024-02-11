@@ -3,8 +3,7 @@ import Link from 'next/link';
 import React from 'react';
 
 import CartWidget from './cartWidget';
-
-import { Search } from 'lucide-react';
+import SearchForm from './searchForm';
 
 export const Header = () => {
   return (
@@ -13,14 +12,7 @@ export const Header = () => {
         <Link href="/" className="text-2xl font-extrabold text-white">
           devstore
         </Link>
-        <form className="flex w-[320ps] items-center gap-3 rounded-full bg-zinc-900 px-5 py-3 ring-zinc-700 ">
-          <Search className="size-5 text-zinc-500 " />
-          <input
-            type="text"
-            placeholder="Buscar produtos..."
-            className="flex-1 bg-transparent text-sm outline-none placeholder:text-zinc-500 "
-          />
-        </form>
+        <SearchForm />
       </div>
       <div className="flex items-center gap-4">
         <CartWidget />
