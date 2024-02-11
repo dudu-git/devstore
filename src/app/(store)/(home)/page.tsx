@@ -5,7 +5,9 @@ import api from '@/data/api';
 import { Product } from '@/data/types/products';
 
 async function getFeaturedProducts(): Promise<Product[]> {
-  const response = await api('/products/featured');
+  const response = await api('/products/featured', {
+    next: { revalidate: 60 * 60 } //1h cache
+  });
   const products = await response.json();
   return products;
 }
@@ -13,7 +15,7 @@ async function getFeaturedProducts(): Promise<Product[]> {
 export default async function Home() {
   const [highlightedProduct, ...otherProducts] = await getFeaturedProducts();
 
-  console.log(highlightedProduct);
+  // console.log(highlightedProduct);
   return (
     <div className="grid max-h-[860px] grid-cols-9 grid-rows-6 gap-6">
       <Link
