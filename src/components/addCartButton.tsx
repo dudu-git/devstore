@@ -19,7 +19,7 @@ export default function AddCartButton({ productId }: AddCartButtonProps) {
       className="mt-8 flex h-12 items-center justify-center rounded-full bg-emerald-600 font-semibold text-white"
     >
       {' '}
-      Adicionar ao Carrinho
+      Adicionar ao carrinho
     </button>
   );
 }
