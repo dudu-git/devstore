@@ -12,6 +12,18 @@
 //
 // -- This is a parent command --
 // Cypress.Commands.add('login', (email, password) => { ... })
+
+declare namespace Cypress {
+  interface Chainable {
+    searchByQuery(query: string): Chainable<void>;
+  }
+}
+
+Cypress.Commands.add('searchByQuery', (query: string) => {
+  cy.visit('/');
+  cy.get('input[name="q"]').type(query).parent('form').submit();
+});
+
 //
 //
 // -- This is a child command --
